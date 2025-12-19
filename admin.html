@@ -35,10 +35,53 @@
             font-size: 15px;
         }
 
+        /* --- NEW: Main Header --- */
+        .main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+            z-index: 1000;
+            box-shadow: var(--shadow-sm);
+        }
+        .main-header-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .main-header-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        .main-header-subtitle {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+        .menu-toggle {
+            display: none; /* Скрыт по умолчанию для десктопа */
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 8px 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
         /* --- Layout --- */
         .app-container {
             display: flex;
             min-height: 100vh;
+            padding-top: 60px; /* Отступ для новой шапки */
         }
         .main-wrapper {
             display: flex;
@@ -441,7 +484,15 @@
     </style>
 </head>
 <body>
-    <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+    <!-- НОВОЕ: Единая шапка для всей страницы -->
+    <header class="main-header">
+        <div class="main-header-left">
+            <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+            <div class="main-header-title">ВОЛКОВСКИЙ ГОК</div>
+            <div class="main-header-subtitle">Инструкция пользователя</div>
+        </div>
+    </header>
+
     <div class="app-container">
         <div class="main-wrapper">
             <aside class="sidebar" id="sidebar">
@@ -456,7 +507,6 @@
             <button class="sidebar-toggle" onclick="toggleSidebarDesktop()"></button>
 
             <div class="content-wrapper">
-                <h1 class="main-title">Инструкция пользователя</h1>
                 <main class="content-pane">
 
                     <!-- Section 1: Descriptive -->
